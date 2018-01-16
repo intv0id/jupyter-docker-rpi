@@ -7,10 +7,17 @@ WORKDIR /root
 RUN apt update && apt upgrade -y
 RUN apt install -y vim
 
-# Configure the database
-ADD init.sh /tmp/init.sh
-RUN chmod 775 /tmp/init.sh
-RUN rm /tmp/init.sh
+# Base install
+ADD scripts/init.sh /tmp/init.sh
+RUN bash /tmp/init.sh && rm /tmp/init.sh
+
+# Python Datascience stuff
+ADD scripts/datascience.sh /tmp/datascience.sh
+RUN bash /tmp/datascience.sh && rm /tmp/datascience.sh
+
+# Octave stuff
+ADD scripts/octave.sh /tmp/octave.sh
+RUN bash /tmp/octave.sh && rm /tmp/octave.sh
 
 ADD start.sh /start.sh
 
