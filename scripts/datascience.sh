@@ -4,9 +4,8 @@ apt install -y \
     python3-matplotlib \
     python3-pandas \
     python3-seaborn \
+    python-sklearn \
     ipyparallel
 
 ipcluster nbextension enable
-
-pip3 install scikit-learn
     
